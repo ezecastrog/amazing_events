@@ -1,66 +1,82 @@
-
-#navbarNavAltMarkup>div>a{
-    padding-right: 50px;
-    
+#navbarNavAltMarkup > div > a {
+  padding-right: 50px;
 }
-.carousel-item>a{
-    font-size: xx-large;
-    color: black;
-    text-decoration: none;
-    background-color: #808080;
-    padding: 1rem 0;
+
+nav {
+  border: 1px solid black;
+}
+.carousel-item > a {
+  font-size: xx-large;
+  color: black;
+  text-decoration: none;
+  background-color: #808080;
+  padding: 1rem 0;
 }
 .carousel-control-next,
 .carousel-control-prev /*, .carousel-indicators */ {
-    filter: invert(100%);
+  filter: invert(100%);
 }
-.list-group-item{
-    border: 0;
+.list-group-item {
+  border: 0;
 }
-.index-checkbox{
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+.index-checkbox {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
-.card-price{
-    display: flex;
-    justify-content: space-between;
+.card-price {
+  display: flex;
+  justify-content: space-between;
 }
-@media (max-width:1000px) {.index-card{
+@media (max-width: 1000px) {
+  .index-card {
     flex-direction: column;
     padding-left: 25%;
     padding-right: 10%;
     width: fit-content;
-}   
+  }
 }
-.index-card>.card{
-    border: 1px solid red;
- justify-content: space-around;
+.index-card > .card {
+  border: 1px solid black;
+  justify-content: space-around;
 }
-.rounded-circle{
-    padding:0.5rem;
+.rounded-circle {
+  padding: 0.5rem;
 }
-footer{
-    border-top: 3rem;
-    padding: 1rem;
+footer {
+  border-top: 3rem;
+  padding: 1rem;
+  border: 1px solid black;
 }
-.card-container{
-    padding-bottom: 10rem;
+.card-container {
+  padding-bottom: 10rem;
 }
 
-.footer-info{
-    font-size: x-large;
-    padding-right: 5rem;
+.footer-info {
+  font-size: x-large;
+  padding-right: 5rem;
 }
 /* Contact */
-.form-container{
-    padding-left: 30rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+.form-container {
+  padding-left: 30rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 /* Stats */
-.stats-table{
-    border: 3rem;
+.stats-table {
+  border: 3rem;
 }
-.table-container{
-    padding: 3rem;
+.table-container {
+  padding: 3rem;
+}
+/* Detail */
+.detail-card,
+.detail-card-container {
+  border: 1px solid black;
+  padding: 2rem;
+}
+
+@media (max-width: 1000px) {
+  .detail-card {
+    flex-direction: column;
+  }
 }
