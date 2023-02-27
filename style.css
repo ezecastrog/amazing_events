@@ -51,3 +51,8 @@ footer{
     font-size: x-large;
     padding-right: 5rem;
 }
+/* Contact */
+.form-container{
+    padding-left: 30rem;
+    padding-top: 3rem;
+}
