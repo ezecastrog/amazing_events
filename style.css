@@ -55,4 +55,12 @@ footer{
 .form-container{
     padding-left: 30rem;
     padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+/* Stats */
+.stats-table{
+    border: 3rem;
+}
+.table-container{
+    padding: 3rem;
 }
