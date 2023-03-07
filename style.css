@@ -37,7 +37,6 @@ nav {
 }
 .index-card > .card {
   border: 1px solid black;
-  justify-content: space-around;
 }
 .rounded-circle {
   padding: 0.5rem;
@@ -49,6 +48,7 @@ footer {
 }
 .card-container {
   padding-bottom: 10rem;
+  flex-wrap: wrap;
 }
 
 .footer-info {
@@ -74,9 +74,23 @@ footer {
   border: 1px solid black;
   padding: 2rem;
 }
+.detail-card-container{
+  padding: 0;
+}
+
 
 @media (max-width: 1000px) {
   .detail-card {
     flex-direction: column;
+    
   }
+}
+
+/* Cards */
+.individual-card-container{
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+.card-img>img{
+  max-width: 60rem;
 }
