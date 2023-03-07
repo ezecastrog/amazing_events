@@ -171,40 +171,42 @@
       "price":250
     }
   ]
- 
+
 function paintDOM(events){
-    let body =``;
-    const tagToUpdate = document.getElementById("cards-container");
-    console.log("tagToUpdate",tagToUpdate);
+ let body =``;
+ const tagToUpdate = document.getElementById("cards-container");
+ console.log("tagToUpdate",tagToUpdate);
 
-    for (let i = 0; i < events.length; i++) {
-        body +=`
-        <div class="individual-card-container d-flex">
-        <div class="card">
-        <div class="card-img">
+ for (let i = 0; i < events.length ; i++) {
 
-        <img
-          src="${events[i].image}"
-          class="card-img-top col-2"
-          alt="..."
-          height="250"
-        />
-        </div>
+    if (currentDate<events[i].date){
+     body +=`
+     <div class="individual-card-container d-flex">
+     <div class="card">
+     <div class="card-img">
 
-        <div class="card-body">
-          <h5 class="card-title">${events[i].name}</h5>
-          <p class="card-text d-flex">${events[i].description}</p>
-          <div class="card-price justify-content-between">
-            <p>Price $${events[i].price}</p>
-            <a href="./details.html" class="btn btn-primary">Ver mas...</a>
-          </div>
-        </div>
-      </div>
-      </div>
-        `;
-    }
+     <img
+       src="${events[i].image}"
+       class="card-img-top col-2"
+       alt="..."
+       height="250"
+     />
+     </div>
 
-    tagToUpdate.innerHTML = body;
+     <div class="card-body">
+       <h5 class="card-title">${events[i].name}</h5>
+       <p class="card-text d-flex">${events[i].description}</p>
+       <div class="card-price justify-content-between">
+         <p>Price $${events[i].price}</p>
+         <a href="./details.html" class="btn btn-primary">Ver mas...</a>
+       </div>
+     </div>
+   </div>
+   </div>
+     `};
+ }
+
+ tagToUpdate.innerHTML = body;
 }
 paintDOM(events);
 
@@ -214,4 +216,3 @@ paintDOM(events);
 // let year = date.getFullYear();
 // let currentDate = `${year}-${month}-${day}`;
 // console.log(currentDate);
-
