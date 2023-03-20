@@ -82,55 +82,11 @@
       </div>
     </div>
     <div class="index-checkbox d-flex justify-content-around container-sm">
-      <ul class="list-group list-group-horizontal justify-content-between">
-        <li class="list-group-item">
-          <input
-            class="form-check-input me-1"
-            type="checkbox"
-            value=""
-            id="firstCheckbox"
-          />
-          <label class="form-check-label" for="firstCheckbox">Category</label>
-        </li>
-        <li class="list-group-item">
-          <input
-            class="form-check-input me-1"
-            type="checkbox"
-            value=""
-            id="secondCheckbox"
-          />
-          <label class="form-check-label" for="secondCheckbox">Category</label>
-        </li>
-        <li class="list-group-item">
-          <input
-            class="form-check-input me-1"
-            type="checkbox"
-            value=""
-            id="thirdCheckbox"
-          />
-          <label class="form-check-label" for="thirdCheckbox">Category</label>
-        </li>
-        <li class="list-group-item">
-          <input
-            class="form-check-input me-1"
-            type="checkbox"
-            value=""
-            id="fourthCheckbox"
-          />
-          <label class="form-check-label" for="thirdCheckbox">Category</label>
-        </li>
-        <li class="list-group-item">
-          <input
-            class="form-check-input me-2"
-            type="checkbox"
-            value=""
-            id="fifthCheckbox"
-          />
-          <label class="form-check-label" for="thirdCheckbox">Category</label>
-        </li>
+      <ul class="list-group list-group-horizontal justify-content-between" id="checkbox-container">
+        
       </ul>
       <form class="d-flex index-search-form" role="search">
-        <input class="form-control me-2" type="search" aria-label="Search" />
+        <input class="form-control me-2" type="text" name="textInput"/>
         <button class="btn btn-outline-success" type="submit">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -149,8 +105,7 @@
     </div>
 
     <div
-      class="card-container d-flex index-card justify-content-around container-s" id="cards-container"
-    >
+      class="card-container d-flex index-card justify-content-around container-s" id="cardsContainer">
     </div>
     <footer class="container-fluid d-flex bg-secondary">
       <div class="d-flex container-fluid justify-content-around col-2">
