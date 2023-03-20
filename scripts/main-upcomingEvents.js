@@ -1,9 +1,9 @@
   
-  let currentDate = "2022-01-01"
+  const currentDate = "2022-01-01"
    
   const events = [
     {
-      _id: 1,
+      "id": 1,
       "image":"./multimedia/food.jpg",
       "name":"Collectivities Party",
       "date":"2021-12-12",
@@ -15,7 +15,7 @@
       "price":5
     },
     {
-      _id: 2,
+      "id": 2,
       "image":"./multimedia/koreanFood.jpg",
       "name":"Korean style",
       "date":"2022-08-12",
@@ -27,7 +27,7 @@
       "price":10
     },
     {
-      _id: 3,
+      "id": 3,
       "image":"./multimedia/jurassic.jpg",
       "name":"Jurassic Park",
       "date":"2021-11-02",
@@ -39,7 +39,7 @@
       "price":15
     },
     {
-      _id: 4,
+      "id": 4,
       "image":"./multimedia/parisianMuseum.jpg",
       "name":"Parisian Museum",
       "date":"2022-11-02",
@@ -51,7 +51,7 @@
       "price":3500
     },
     {
-      _id: 5,
+      "id": 5,
       "image":"./multimedia/comicon.jpg",
       "name":"Comicon",
       "date":"2021-02-12",
@@ -63,7 +63,7 @@
       "price":54
     },
     {
-      _id: 6,
+      "id": 6,
       "image":"./multimedia/halloween.jpg",
       "name":"Halloween Night",
       "date":"2022-02-12",
@@ -75,7 +75,7 @@
       "price":12
     },
     {
-      _id: 7,
+      "id": 7,
       "image":"./multimedia/metallicaConcert.jpg",
       "name":"Metallica in concert",
       "date":"2022-01-22",
@@ -87,7 +87,7 @@
       "price":150
     },
     {
-      _id: 8,
+      "id": 8,
       "image":"./multimedia/concert.jpg",
       "name":"Electronic Fest",
       "date":"2021-01-22",
@@ -99,7 +99,7 @@
       "price":250
       },
     {
-      _id: 9,
+      "id": 9,
       "image":"./multimedia/marathon.jpg",
       "name":"10K for life",
       "date":"2021-03-01",
@@ -111,7 +111,7 @@
       "price":3
     },
     {
-      _id: 10,
+      "id": 10,
       "image":"./multimedia/nyMarathon.jpg",
       "name":"15K NY",
       "date":"2022-03-01",
@@ -123,7 +123,7 @@
       "price":3
       },
     {
-      _id: 11,
+      "id": 11,
       "image":"./multimedia/books.jpg",
       "name":"School's book fair",
       "date":"2022-10-15",
@@ -135,7 +135,7 @@
       "price":1
     },
     {
-      _id: 12,
+      "id": 12,
       "image":"./multimedia/cookBook.jpg",
       "name":"Just for your kitchen",
       "date":"2021-11-09",
@@ -147,7 +147,7 @@
       "price":100
     },
     {
-      _id: 13,
+      "id": 13,
       "image":"./multimedia/batman.jpg",
       "name":"Batman",
       "date":"2021-3-11",
@@ -159,7 +159,7 @@
       "price":225
     },
     {
-      _id: 14,
+      "id": 14,
       "image":"./multimedia/avengers.jpg",
       "name":"Avengers",
       "date":"2022-10-15",
@@ -172,43 +172,108 @@
     }
   ]
 
-function paintDOM(events){
- let body =``;
- const tagToUpdate = document.getElementById("cards-container");
- console.log("tagToUpdate",tagToUpdate);
+//Constantes Capturadas y variables
 
- for (let i = 0; i < events.length ; i++) {
+const contenedor = document.getElementById('cardsContainer')
+const contenedorChecks = document.getElementById('checkbox-container')
+const input = document.querySelector("input[name='textInput']");
 
-    if (currentDate<events[i].date){
-     body +=`
-     <div class="individual-card-container d-flex">
-     <div class="card">
-     <div class="card-img">
+//Eventos 
 
-     <img
-       src="${events[i].image}"
-       class="card-img-top col-2"
-       alt="..."
-       height="250"
-     />
-     </div>
+input.addEventListener('input', superFiltro)
+contenedorChecks.addEventListener('change', superFiltro)
 
-     <div class="card-body">
-       <h5 class="card-title">${events[i].name}</h5>
-       <p class="card-text d-flex">${events[i].description}</p>
-       <div class="card-price justify-content-between">
-         <p>Price $${events[i].price}</p>
-         <a href="./details.html" class="btn btn-primary">Ver mas...</a>
-       </div>
-     </div>
-   </div>
-   </div>
-     `};
- }
+//Llamada de funciones
 
- tagToUpdate.innerHTML = body;
+pintarTarjetas(events)
+crearCheckboxes(events)
+
+//Funciones
+
+function superFiltro(){
+  let arrayFiltrado1 = filtrarPorTexto(events,input.value)
+  let arrayFiltrado2 = filtrarPorCategoria(arrayFiltrado1)
+  pintarTarjetas(arrayFiltrado2)
 }
-paintDOM(events);
+
+function pintarTarjetas(arrayDatos){
+  if(arrayDatos.length == 0){
+    contenedor.innerHTML = "<h3 class='display-1-fw-bolder'>No hay coincidencias!</h3>";
+  } else { 
+  let tarjetas = ''
+  let arrayFiltrado = arrayDatos.filter(arrayDatos => arrayDatos.date>currentDate)
+  arrayFiltrado.forEach(elemento =>{
+
+tarjetas +=    `
+<div class="individual-card-container d-flex">
+<div class="card">
+<div class="card-img">
+
+<img
+src="${elemento.image}"
+class="card-img-top col-2"
+alt="..."
+height="250"
+/>
+</div>
+
+<div class="card-body">
+<h5 class="card-title">${elemento.name}</h5>
+<p class="card-text d-flex">${elemento.description}</p>
+<div class="card-price justify-content-between">
+  <p>Price $${elemento.price}</p>
+  <a href="./details.html" class="btn btn-primary">Ver mas...</a>
+</div>
+</div>
+</div>
+</div>`
+  })
+  contenedor.innerHTML = tarjetas
+}}
+
+function filtrarPorTexto(arrayDatos, texto){
+  let arrayFiltrado = arrayDatos.filter(elemento => elemento.name.toLowerCase().includes(texto.toLowerCase()))
+  return arrayFiltrado
+}
+function crearCheckboxes(arrayInfo){
+  let checks = ''
+  let categoryRepeated = arrayInfo.map(elemento =>elemento.category)
+  let category = new Set(categoryRepeated.sort((a,b) =>{
+    if(a>b){
+      return 1
+    }
+    if(a<b){
+      return -1
+    }return 0
+    
+  }))
+  category.forEach(elemento => {
+    checks += `<li class="list-group-item">
+    <input
+      class="form-check-input me-1"
+      type="checkbox"
+      value="${elemento}"
+      id="${elemento}"
+    />
+    <label class="form-check-label" for="${elemento}">${elemento}</label>
+  </li>`
+  })
+  contenedorChecks.innerHTML=checks
+}
+
+function filtrarPorCategoria(arrayInfo){
+  let checkboxes = document.querySelectorAll("input[type='checkbox']")
+  let arrayChecks = Array.from(checkboxes)
+  let checksChecked = arrayChecks.filter(check => check.checked)
+  if (checksChecked.length == 0 ){
+    return arrayInfo
+  }
+  let checkValues = checksChecked.map(check => check.value)
+console.log(checkValues)
+  let arrayFiltrado = arrayInfo.filter(elemento => checkValues.includes(elemento.category))
+  console.log(arrayFiltrado)
+  return arrayFiltrado
+}
 
 // const date = new Date(); // Getting automatically the current date and formatting it to yyyy-mm-dd
 // let day = date.getDate();
