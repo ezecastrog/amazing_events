@@ -222,7 +222,7 @@ height="250"
 <p class="card-text d-flex">${elemento.description}</p>
 <div class="card-price justify-content-between">
   <p>Price $${elemento.price}</p>
-  <a href="./details.html" class="btn btn-primary">Ver mas...</a>
+  <a href="./details.html?id=${elemento.id}" class="btn btn-primary">Ver mas...</a>
 </div>
 </div>
 </div>

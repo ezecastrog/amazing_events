@@ -1,7 +1,4 @@
-  
-  const currentDate = "2022-01-01";
-   
-  const events = [
+const events = [
     {
       "id": 1,
       "image":"./multimedia/food.jpg",
@@ -172,112 +169,28 @@
     }
   ]
 
+let query = location.search
+let params = new URLSearchParams(query)
+console.log(params)
+let idParams = params.get("id")
 
-//Constantes Capturadas y variables
+const contenedorTarjeta = document.getElementById('contenedorTarjeta') 
 
-const contenedor = document.getElementById('cardsContainer')
-const contenedorChecks = document.getElementById('checkbox-container')
-const input = document.querySelector("input[name='textInput']");
+let tarjetaElegida = events.find(info => info.id == idParams);
 
-//Eventos 
+    let tarjeta = "";
+    tarjeta += `<img src="${tarjetaElegida.image}" class="card-img-top d-flex" alt="..." height="380" >
+    </div>
+    <div class="p-3"></div>
+    <div class="card justify-content-center border-dark p-2  d-flex">
+        <h2 class="p-1">${tarjetaElegida.name}</h2>
+        <p class="p-1">Description: ${tarjetaElegida.description}</p>
+        <p class="p-1">Date: ${tarjetaElegida.date}</p>
+        <p class="p-1">Place: ${tarjetaElegida.place}</p>
+        <p class="p-1"> Assistance: ${tarjetaElegida.assistance || tarjetaElegida.estimate}</p>
+        <p class="p-1">Price $${tarjetaElegida.price}</p>
+        
+`
 
-input.addEventListener('input', superFiltro)
-contenedorChecks.addEventListener('change', superFiltro)
+contenedorTarjeta.innerHTML = tarjeta;
 
-//Llamada de funciones
-
-pintarTarjetas(events)
-crearCheckboxes(events)
-
-//Funciones
-
-function superFiltro(){
-  let arrayFiltrado1 = filtrarPorTexto(events,input.value)
-  let arrayFiltrado2 = filtrarPorCategoria(arrayFiltrado1)
-  pintarTarjetas(arrayFiltrado2)
-}
-
-function pintarTarjetas(arrayDatos){
-  if(arrayDatos.length == 0){
-    contenedor.innerHTML = "<h3 class='display-1-fw-bolder'>No hay coincidencias!</h3>";
-  } else { 
-  let tarjetas = ''
-  arrayDatos.forEach(elemento =>{
-
-tarjetas +=    `
-<div class="individual-card-container d-flex">
-<div class="card">
-<div class="card-img">
-
-<img
-src="${elemento.image}"
-class="card-img-top col-2"
-alt="..."
-height="250"
-/>
-</div>
-
-<div class="card-body">
-<h5 class="card-title">${elemento.name}</h5>
-<p class="card-text d-flex">${elemento.description}</p>
-<div class="card-price justify-content-between">
-  <p>Price $${elemento.price}</p>
-  <a href="./details.html?id=${elemento.id}" class="btn btn-primary">Ver mas...</a>
-</div>
-</div>
-</div>
-</div>`
-  })
-  contenedor.innerHTML = tarjetas
-}}
-
-function filtrarPorTexto(arrayDatos, texto){
-  let arrayFiltrado = arrayDatos.filter(elemento => elemento.name.toLowerCase().includes(texto.toLowerCase()))
-  return arrayFiltrado
-}
-function crearCheckboxes(arrayInfo){
-  let checks = ''
-  let categoryRepeated = arrayInfo.map(elemento =>elemento.category)
-  let category = new Set(categoryRepeated.sort((a,b) =>{
-    if(a>b){
-      return 1
-    }
-    if(a<b){
-      return -1
-    }return 0
-    
-  }))
-  category.forEach(elemento => {
-    checks += `<li class="list-group-item">
-    <input
-      class="form-check-input me-1"
-      type="checkbox"
-      value="${elemento}"
-      id="${elemento}"
-    />
-    <label class="form-check-label" for="${elemento}">${elemento}</label>
-  </li>`
-  })
-  contenedorChecks.innerHTML=checks
-}
-
-function filtrarPorCategoria(arrayInfo){
-  let checkboxes = document.querySelectorAll("input[type='checkbox']")
-  let arrayChecks = Array.from(checkboxes)
-  let checksChecked = arrayChecks.filter(check => check.checked)
-  if (checksChecked.length == 0 ){
-    return arrayInfo
-  }
-  let checkValues = checksChecked.map(check => check.value)
-console.log(checkValues)
-  let arrayFiltrado = arrayInfo.filter(elemento => checkValues.includes(elemento.category))
-  console.log(arrayFiltrado)
-  return arrayFiltrado
-}
-
-// const date = new Date(); // Getting automatically the current date and formatting it to yyyy-mm-dd
-// let day = date.getDate();
-// let month = date.getMonth() + 1;
-// let year = date.getFullYear();
-// let currentDate = `${year}-${month}-${day}`;
-// console.log(currentDate);
