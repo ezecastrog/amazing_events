@@ -17,7 +17,7 @@ contenedorChecks.addEventListener('change', superFiltro)
 
 //Llamada de funciones
 
-
+getEvents();
 
 //Funciones
 async function getEvents () {
@@ -32,8 +32,7 @@ async function getEvents () {
         console.log(error.message);
     } 
     };
-    getEvents();
-
+    
 function superFiltro(){
     let arrayFiltrado1 = filtrarPorTexto(events,input.value)
     let arrayFiltrado2 = filtrarPorCategoria(arrayFiltrado1)
